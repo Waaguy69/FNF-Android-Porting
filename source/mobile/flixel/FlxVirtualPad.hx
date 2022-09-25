@@ -1,6 +1,6 @@
-package android.flixel;
+package mobile.flixel;
 
-import android.flixel.FlxButton;
+import mobile.flixel.FlxButton;
 import flixel.FlxG;
 import flixel.graphics.frames.FlxTileFrames;
 import flixel.group.FlxSpriteGroup;
@@ -189,8 +189,8 @@ class FlxVirtualPad extends FlxSpriteGroup
 	private function createButton(X:Float, Y:Float, Width:Int, Height:Int, Graphic:String, Color:Int = 0xFFFFFF):FlxButton
 	{
 		var button:FlxButton = new FlxButton(X, Y);
-		button.frames = FlxTileFrames.fromFrame(FlxAtlasFrames.fromSparrow(Assets.getBitmapData('assets/android/virtualpad.png'),
-			Assets.getText('assets/android/virtualpad.xml'))
+		button.frames = FlxTileFrames.fromFrame(FlxAtlasFrames.fromSparrow(Assets.getBitmapData('assets/mobile/virtualpad.png'),
+			Assets.getText('assets/mobile/virtualpad.xml'))
 			.getByName(Graphic),
 			FlxPoint.get(Width, Height));
 		button.resetSizeFromFrame();
@@ -198,7 +198,7 @@ class FlxVirtualPad extends FlxSpriteGroup
 		button.immovable = true;
 		button.scrollFactor.set();
 		button.color = Color;
-		button.alpha = AndroidControls.getOpacity(false);
+		button.alpha = MobileControls.getOpacity(false);
 		#if FLX_DEBUG
 		button.ignoreDrawDebug = true;
 		#end

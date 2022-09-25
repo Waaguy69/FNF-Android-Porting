@@ -1,7 +1,7 @@
-package android;
+package mobile;
 
-import android.flixel.FlxHitbox;
-import android.flixel.FlxVirtualPad;
+import mobile.flixel.FlxHitbox;
+import mobile.flixel.FlxVirtualPad;
 import flixel.FlxG;
 import flixel.group.FlxSpriteGroup;
 import flixel.math.FlxPoint;
@@ -10,7 +10,7 @@ import flixel.util.FlxDestroyUtil;
 /**
  * @author Mihai Alexandru (M.A. Jigsaw)
  */
-class AndroidControls extends FlxSpriteGroup
+class MobileControls extends FlxSpriteGroup
 {
 	public var virtualPad:FlxVirtualPad;
 	public var hitbox:FlxHitbox;
@@ -19,7 +19,7 @@ class AndroidControls extends FlxSpriteGroup
 	{
 		super();
 
-		switch (AndroidControls.getMode())
+		switch (MobileControls.getMode())
 		{
 			case 'Pad-Right':
 				virtualPad = new FlxVirtualPad(RIGHT_FULL, NONE);
@@ -28,7 +28,7 @@ class AndroidControls extends FlxSpriteGroup
 				virtualPad = new FlxVirtualPad(LEFT_FULL, NONE);
 				add(virtualPad);
 			case 'Pad-Custom':
-				virtualPad = AndroidControls.getCustomMode(new FlxVirtualPad(RIGHT_FULL, NONE));
+				virtualPad = MobileControls.getCustomMode(new FlxVirtualPad(RIGHT_FULL, NONE));
 				add(virtualPad);
 			case 'Pad-Duo':
 				virtualPad = new FlxVirtualPad(BOTH_FULL, NONE);

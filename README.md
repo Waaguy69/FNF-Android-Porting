@@ -87,10 +87,10 @@ import flixel.input.keyboard.FlxKey;
 add
 
 ```haxe
-#if android
-import android.flixel.FlxButton;
-import android.flixel.FlxHitbox;
-import android.flixel.FlxVirtualPad;
+#if mobile
+import mobile.flixel.FlxButton;
+import mobile.flixel.FlxHitbox;
+import mobile.flixel.FlxVirtualPad;
 #end
 ```
 
@@ -104,7 +104,7 @@ override function update()
 
 add
 ```haxe
-	#if android
+	#if mobile
 	public var trackedinputsUI:Array<FlxActionInput> = [];
 	public var trackedinputsNOTES:Array<FlxActionInput> = [];
 
@@ -218,7 +218,7 @@ add
 		}
 	}
 
-	public function removeAControlsInput(Tinputs:Array<FlxActionInput>)
+	public function removeControlsInput(Tinputs:Array<FlxActionInput>)
 	{
 		for (action in this.digitalActions)
 		{
@@ -270,7 +270,7 @@ and replace these lines (you can skip this, it's for psych engine)
 
 with
 ```haxe
-	#if !android
+	#if !mobile
 	public function bindKeys(control:Control, keys:Array<FlxKey>)
 	{
 		var copyKeys:Array<FlxKey> = keys.copy();
@@ -323,9 +323,9 @@ with
 
 in the lines you import things add
 ```haxe
-#if android
-import android.AndroidControls;
-import android.flixel.FlxVirtualPad;
+#if mobile
+import mobile.MobileControls;
+import mobile.flixel.FlxVirtualPad;
 import flixel.FlxCamera;
 import flixel.input.actions.FlxActionInput;
 import flixel.util.FlxDestroyUtil;
@@ -340,8 +340,8 @@ inline function get_controls():Controls
 
 add
 ```haxe
-	#if android
-	var androidControls:AndroidControls;
+	#if mobile
+	var mobileControls:MobileControls;
 	var virtualPad:FlxVirtualPad;
 	var trackedinputsUI:Array<FlxActionInput> = [];
 	var trackedinputsNOTES:Array<FlxActionInput> = [];
@@ -359,24 +359,24 @@ add
 	public function removeVirtualPad()
 	{
 		if (trackedinputsUI != [])
-			controls.removeAControlsInput(trackedinputsUI);
+			controls.removeControlsInput(trackedinputsUI);
 
 		if (virtualPad != null)
 			remove(virtualPad);
 	}
 
-	public function addAndroidControls(DefaultDrawTarget:Bool = true)
+	public function addMobileControls(DefaultDrawTarget:Bool = true)
 	{
-		androidControls = new AndroidControls();
+		mobileControls = new MobileControls();
 
-		switch (AndroidControls.getMode())
+		switch (MobileControls.getMode())
 		{
 			case 'Pad-Right' | 'Pad-Left' | 'Pad-Custom':
-				controls.setVirtualPadNOTES(androidControls.virtualPad, RIGHT_FULL, NONE);
+				controls.setVirtualPadNOTES(mobileControls.virtualPad, RIGHT_FULL, NONE);
 			case 'Pad-Duo':
-				controls.setVirtualPadNOTES(androidControls.virtualPad, BOTH_FULL, NONE);
+				controls.setVirtualPadNOTES(mobileControls.virtualPad, BOTH_FULL, NONE);
 			case 'Hitbox':
-				controls.setHitBox(androidControls.hitbox);
+				controls.setHitBox(mobileControls.hitbox);
 			case 'Keyboard': // do nothing
 		}
 
@@ -387,18 +387,18 @@ add
 		FlxG.cameras.add(camControls, DefaultDrawTarget);
 		camControls.bgColor.alpha = 0;
 
-		androidControls.cameras = [camControls];
-		androidControls.visible = false;
-		add(androidControls);
+		mobileControls.cameras = [camControls];
+		mobileControls.visible = false;
+		add(mobileControls);
 	}
 
-	public function removeAndroidControls()
+	public function removeMobileControls()
 	{
 		if (trackedinputsNOTES != [])
-			controls.removeAControlsInput(trackedinputsNOTES);
+			controls.removeControlsInput(trackedinputsNOTES);
 
-		if (androidControls != null)
-			remove(androidControls);
+		if (mobileControls != null)
+			remove(mobileControls);
 	}
 
 	public function addPadCamera(DefaultDrawTarget:Bool = true)
@@ -415,27 +415,27 @@ add
 
 	override function destroy()
 	{
-		#if android
+		#if mobile
 		if (trackedinputsNOTES != [])
-			controls.removeAControlsInput(trackedinputsNOTES);
+			controls.removeControlsInput(trackedinputsNOTES);
 
 		if (trackedinputsUI != [])
-			controls.removeAControlsInput(trackedinputsUI);
+			controls.removeControlsInput(trackedinputsUI);
 		#end
 
 		super.destroy();
 
-		#if android
+		#if mobile
 		if (virtualPad != null)
 		{
 			virtualPad = FlxDestroyUtil.destroy(virtualPad);
 			virtualPad = null;
 		}
 
-		if (androidControls != null)
+		if (mobileControls != null)
 		{
-			androidControls = FlxDestroyUtil.destroy(androidControls);
-			androidControls = null;
+			mobileControls = FlxDestroyUtil.destroy(mobileControls);
+			mobileControls = null;
 		}
 		#end
 	}
@@ -445,8 +445,8 @@ add
 
 in the lines you import things add
 ```haxe
-#if android
-import android.flixel.FlxVirtualPad;
+#if mobile
+import mobile.flixel.FlxVirtualPad;
 import flixel.FlxCamera;
 import flixel.input.actions.FlxActionInput;
 import flixel.util.FlxDestroyUtil;
@@ -461,7 +461,7 @@ inline function get_controls():Controls
 
 add
 ```haxe
-	#if android
+	#if mobile
 	var virtualPad:FlxVirtualPad;
 	var trackedinputsUI:Array<FlxActionInput> = [];
 
@@ -478,7 +478,7 @@ add
 	public function removeVirtualPad()
 	{
 		if (trackedinputsUI != [])
-			controls.removeAControlsInput(trackedinputsUI);
+			controls.removeControlsInput(trackedinputsUI);
 
 		if (virtualPad != null)
 			remove(virtualPad);
@@ -498,14 +498,14 @@ add
 
 	override function destroy()
 	{
-		#if android
+		#if mobile
 		if (trackedinputsUI != [])
-			controls.removeAControlsInput(trackedinputsUI);
+			controls.removeControlsInput(trackedinputsUI);
 		#end
 
 		super.destroy();
 
-		#if android
+		#if mobile
 		if (virtualPad != null)
 		{
 			virtualPad = FlxDestroyUtil.destroy(virtualPad);
@@ -519,17 +519,17 @@ And somehow you finished adding the android controls to your psych engine copy
 
 now on every state/substate add
 ```haxe
-#if android
+#if mobile
 addVirtualPad(LEFT_FULL, A_B);
 #end
 
 //if you want to remove it at some moment use
-#if android
+#if mobile
 removeVirtualPad();
 #end
 
 //if you want it to have a camera
-#if android
+#if mobile
 addPadCamera();
 #end
 
@@ -539,23 +539,23 @@ addPadCamera();
 //on Playstate.hx after all of the
 //obj.cameras = [...];
 //things, add
-#if android
-addAndroidControls();
+#if mobile
+addMobileControls();
 #end
 
 //if you want to remove it at some moment use
-#if android
-removeAndroidControls();
+#if mobile
+removeMobileControls();
 #end
 
 //to make the controls visible the code is
-#if android
-androidControls.visible = true;
+#if mobile
+mobileControls.visible = true;
 #end
 
 //to make the controls invisible the code is
-#if android
-androidControls.visible = false;
+#if mobile
+mobileControls.visible = false;
 #end
 ```
 
@@ -625,7 +625,7 @@ SUtil.saveContent("your file name", ".txt", "lololol");
 13. Do an action when you press on the screen
 
 ```haxe
-#if android
+#if mobile
 var justTouched:Bool = false;
 
 for (touch in FlxG.touches.list)

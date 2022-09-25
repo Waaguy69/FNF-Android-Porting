@@ -14,8 +14,10 @@ import haxe.io.Path;
 import openfl.Lib;
 import openfl.events.UncaughtErrorEvent;
 import openfl.utils.Assets;
+#if (sys && !ios)
 import sys.FileSystem;
 import sys.io.File;
+#end
 
 using StringTools;
 
@@ -141,6 +143,7 @@ class SUtil
 
 			errMsg += u.error;
 
+			#if (sys && !ios)
 			try
 			{
 				if (!FileSystem.exists(SUtil.getPath() + 'logs'))
@@ -159,14 +162,15 @@ class SUtil
 			catch (e:Dynamic)
 			Hardware.toast("Error!\nClouldn't save the crash dump because:\n" + e, ToastType.LENGTH_LONG);
 			#end
+			#end
 
-			Sys.println(errMsg);
+			println(errMsg);
 			Lib.application.window.alert(errMsg, 'Error!');
-
 			System.exit(1);
 		});
 	}
 
+	#if (sys && !ios)
 	public static function saveContent(fileName:String = 'file', fileExtension:String = '.json',
 			fileData:String = 'you forgot to add something in your code lol')
 	{
@@ -196,6 +200,17 @@ class SUtil
 		#if android
 		catch (e:Dynamic)
 		Hardware.toast("Error!\nClouldn't copy the file because:\n" + e, ToastType.LENGTH_LONG);
+		#end
+	}
+	#end
+
+	private static function println(msg:String):Void
+	{
+		#if sys
+		Sys.println(msg);
+		#else
+		// Pass null to exclude the position.
+		haxe.Log.trace(msg, null);
 		#end
 	}
 }
