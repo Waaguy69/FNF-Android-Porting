@@ -53,7 +53,7 @@ Replace It With
 Add
 
 ```xml
-	<assets path="assets/android" if="android" /> <!-- to not have the android assets in another builds -saw -->
+	<assets path="assets/mobile" if="mobile" /> <!-- to not have the mobile assets in another builds -saw -->
 ```
 
 Then, After the Libraries, or where the packeges are located add
