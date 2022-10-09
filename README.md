@@ -47,17 +47,15 @@ On This Line
 Replace It With
 ```xml
 	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" width="1280" height="720" resizable="false" allow-shaders="true" require-shaders="true" />
+	<window if="mobile" orientation="landscape" fullscreen="true" width="1280" height="720" resizable="false" allow-shaders="true" require-shaders="true" allow-high-dpi="true" />
 ```
 
 Add
-
 ```xml
-	<assets path="assets/mobile" if="mobile" /> <!-- to not have the mobile assets in another builds -saw -->
+	<assets path="mobile" rename="assets/mobile" if="mobile" /> <!-- to not have the mobile assets in another builds -saw -->
 ```
 
 Then, After the Libraries, or where the packeges are located add
-
 ```xml
 	<haxelib name="extension-androidtools" if="android" />
 ```
@@ -79,13 +77,13 @@ Add
 
 4. Setup Controls.hx
 
-after these lines
+After these lines
 ```haxe
 import flixel.input.actions.FlxActionSet;
 import flixel.input.keyboard.FlxKey;
 ```
-add
 
+Add
 ```haxe
 #if mobile
 import mobile.flixel.FlxButton;
@@ -94,7 +92,7 @@ import mobile.flixel.FlxVirtualPad;
 #end
 ```
 
-before these lines
+Before these lines
 ```haxe
 override function update()
 {
@@ -102,7 +100,7 @@ override function update()
 }
 ```
 
-add
+Add
 ```haxe
 	#if mobile
 	public var trackedinputsUI:Array<FlxActionInput> = [];
@@ -237,7 +235,7 @@ add
 	#end
 ```
 
-and replace these lines (you can skip this, it's for psych engine)
+And replace these lines (you can skip this, it's for psych engine)
 ```haxe
 	public function bindKeys(control:Control, keys:Array<FlxKey>)
 	{
@@ -268,7 +266,7 @@ and replace these lines (you can skip this, it's for psych engine)
 	}
 ```
 
-with
+With
 ```haxe
 	#if !mobile
 	public function bindKeys(control:Control, keys:Array<FlxKey>)
@@ -321,7 +319,7 @@ with
 
 5. Setup MusicBeatState.hx
 
-in the lines you import things add
+In the lines you import things add
 ```haxe
 #if mobile
 import mobile.MobileControls;
@@ -332,13 +330,13 @@ import flixel.util.FlxDestroyUtil;
 #end
 ```
 
-after these lines
+After these lines
 ```haxe
 inline function get_controls():Controls
 	return PlayerSettings.player1.controls;
 ```
 
-add
+Add
 ```haxe
 	#if mobile
 	var mobileControls:MobileControls;
@@ -443,7 +441,7 @@ add
 
 6. Setup MusicBeatSubstate.hx
 
-in the lines you import things add
+In the lines you import things add
 ```haxe
 #if mobile
 import mobile.flixel.FlxVirtualPad;
@@ -453,13 +451,13 @@ import flixel.util.FlxDestroyUtil;
 #end
 ```
 
-after these lines
+After these lines
 ```haxe
 inline function get_controls():Controls
 	return PlayerSettings.player1.controls;
 ```
 
-add
+Add
 ```haxe
 	#if mobile
 	var virtualPad:FlxVirtualPad;
@@ -515,9 +513,7 @@ add
 	}
 ```
 
-And somehow you finished adding the android controls to your psych engine copy
-
-now on every state/substate add
+And somehow you finished adding the android controls to your mod now on every state/substate add
 ```haxe
 #if mobile
 addVirtualPad(LEFT_FULL, A_B);
@@ -563,12 +559,12 @@ mobileControls.visible = false;
 
 in TitleState.hx
 
-after
+After
 ```haxe
 override public function create():Void
 ```
 
-add
+Add
 ```haxe
 #if android
 FlxG.android.preventDefaultKeys = [BACK];
@@ -577,47 +573,47 @@ FlxG.android.preventDefaultKeys = [BACK];
 
 8. Set An action to the BACK Button
 
-you can set one with
+You can set one with
 ```haxe
 #if android || FlxG.android.justReleased.BACK #end
 ```
 
 9. On sys.FileSystem and sys.io.File for modding and polymod stuff
 
-this is not working with app storage but on phone storage it will work with this
-
+This is not working with app storage but on phone storage it will work with this
 ```haxe
 SUtil.getPath() + 
 ```
-this will make the game use the phone storage
-but you will have to add one thing in Your source
+This will make the game use the phone storage
+but you will have to add one thing in your source
 
-in Main.hx before 
+In Main.hx before 
 ```haxe
 addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
 ```
 
-add 
+Add
 ```haxe
 SUtil.check();
 ```
-this will check for android storage permisions and the assets/mods directories
+This will check for android storage permisions and the assets/mods directories
 
 10. On Crash Application Alert
 
-on Main.hx after
+On Main.hx after
 ```haxe
 public function new()
-```	
-add
+```
+
+Add
 ```haxe
 SUtil.uncaughtErrorHandler();
 ```
 
 11. File Saver
 
-This is a feature to save files with sys.io.File
-This is the code
+This is a feature to save files with sys.io.File in phone storage
+
 ```haxe
 SUtil.saveContent("your file name", ".txt", "lololol");
 ```
