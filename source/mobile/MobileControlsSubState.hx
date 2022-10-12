@@ -35,6 +35,10 @@ class MobileControlsSubState extends FlxSubState
 
 	override function create()
 	{
+		for (i in 0...controlsItems.length)
+			if (controlsItems[i] == MobileControls.getMode())
+				curSelected = i;
+
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height,
 			FlxColor.fromHSB(FlxG.random.int(0, 359), FlxG.random.float(0, 0.8), FlxG.random.float(0.3, 1)));
 		bg.alpha = 0.6;
