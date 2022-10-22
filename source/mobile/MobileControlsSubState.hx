@@ -36,7 +36,7 @@ class MobileControlsSubState extends FlxSubState
 	override function create()
 	{
 		for (i in 0...controlsItems.length)
-			if (controlsItems[i] == MobileControls.getMode())
+			if (controlsItems[i] == MobileControls.mode)
 				curSelected = i;
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height,
@@ -47,10 +47,10 @@ class MobileControlsSubState extends FlxSubState
 
 		var exitButton:FlxButton = new FlxButton(FlxG.width - 200, 50, 'Exit', function()
 		{
-			MobileControls.setMode(controlsItems[Math.floor(curSelected)]);
+			MobileControls.mode = controlsItems[Math.floor(curSelected)];
 
 			if (controlsItems[Math.floor(curSelected)] == 'Pad-Custom')
-				MobileControls.setCustomMode(virtualPad);
+				MobileControls.customVirtualPad = virtualPad;
 
 			FlxTransitionableState.skipNextTransOut = true;
 			FlxG.resetState();
@@ -62,8 +62,8 @@ class MobileControlsSubState extends FlxSubState
 
 		resetButton = new FlxButton(exitButton.x, exitButton.y + 100, 'Reset', function()
 		{
-			if (resetButton.visible && virtualPad != null) // being sure about something
-				MobileControls.setCustomMode(new FlxVirtualPad(RIGHT_FULL, NONE));
+			if (controlsItems[Math.floor(curSelected)] ==  && resetButton.visible) // being sure about something
+				MobileControls.customVirtualPad = new FlxVirtualPad(RIGHT_FULL, NONE);
 		});
 		resetButton.setGraphicSize(Std.int(resetButton.width) * 3);
 		resetButton.label.setFormat(Assets.getFont('assets/mobile/menu/Comic Sans MS.ttf').fontName, 16, FlxColor.WHITE, CENTER, true);
@@ -222,7 +222,7 @@ class MobileControlsSubState extends FlxSubState
 			case 'Pad-Custom':
 				hitbox.visible = false;
 				remove(virtualPad);
-				virtualPad = MobileControls.getCustomMode();
+				virtualPad = MobileControls.customVirtualPad;
 				add(virtualPad);
 			case 'Pad-Duo':
 				hitbox.visible = false;

@@ -197,7 +197,7 @@ class FlxVirtualPad extends FlxSpriteGroup
 		button.immovable = true;
 		button.scrollFactor.set();
 		button.color = Color;
-		button.alpha = MobileControls.getOpacity(false);
+		button.alpha = 0.6;
 		#if FLX_DEBUG
 		button.ignoreDrawDebug = true;
 		#end
