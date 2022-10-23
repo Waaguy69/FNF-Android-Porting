@@ -56,7 +56,7 @@ class MobileControlsSubState extends FlxSubState
 			FlxG.resetState();
 		});
 		exitButton.setGraphicSize(Std.int(exitButton.width) * 3);
-		exitButton.label.setFormat(Assets.getFont('assets/mobile/menu/Comic Sans MS.ttf').fontName, 16, FlxColor.WHITE, CENTER, true);
+		exitButton.label.setFormat(Assets.getFont('assets/mobile/menu/Funkin Bold.otf').fontName, 16, FlxColor.WHITE, CENTER, true);
 		exitButton.color = FlxColor.YELLOW;
 		add(exitButton);
 
@@ -69,7 +69,7 @@ class MobileControlsSubState extends FlxSubState
 			}
 		});
 		resetButton.setGraphicSize(Std.int(resetButton.width) * 3);
-		resetButton.label.setFormat(Assets.getFont('assets/mobile/menu/Comic Sans MS.ttf').fontName, 16, FlxColor.WHITE, CENTER, true);
+		resetButton.label.setFormat(Assets.getFont('assets/mobile/menu/Funkin Bold.otf').fontName, 16, FlxColor.WHITE, CENTER, true);
 		resetButton.color = FlxColor.RED;
 		resetButton.visible = false;
 		add(resetButton);
@@ -83,7 +83,7 @@ class MobileControlsSubState extends FlxSubState
 		add(hitbox);
 
 		funitext = new FlxText(0, 50, 0, 'No Android Controls!', 32);
-		funitext.setFormat(Assets.getFont('assets/mobile/menu/Comic Sans MS.ttf').fontName, 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,
+		funitext.setFormat(Assets.getFont('assets/mobile/menu/Funkin Bold.otf').fontName, 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,
 			FlxColor.BLACK, true);
 		funitext.borderSize = 2.4;
 		funitext.screenCenter();
@@ -91,7 +91,7 @@ class MobileControlsSubState extends FlxSubState
 		add(funitext);
 
 		inputvari = new FlxText(0, 100, 0, '', 32);
-		inputvari.setFormat(Assets.getFont('assets/mobile/menu/Comic Sans MS.ttf').fontName, 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,
+		inputvari.setFormat(Assets.getFont('assets/mobile/menu/Funkin Bold.otf').fontName, 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,
 			FlxColor.BLACK, true);
 		inputvari.borderSize = 2.4;
 		inputvari.screenCenter(X);
@@ -110,25 +110,25 @@ class MobileControlsSubState extends FlxSubState
 		add(rightArrow);
 
 		rightPozition = new FlxText(10, FlxG.height - 24, 0, '', 16);
-		rightPozition.setFormat(Assets.getFont('assets/mobile/menu/Comic Sans MS.ttf').fontName, 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
+		rightPozition.setFormat(Assets.getFont('assets/mobile/menu/Funkin Bold.otf').fontName, 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
 			FlxColor.BLACK, true);
 		rightPozition.borderSize = 2.4;
 		add(rightPozition);
 
 		leftPozition = new FlxText(10, FlxG.height - 44, 0, '', 16);
-		leftPozition.setFormat(Assets.getFont('assets/mobile/menu/Comic Sans MS.ttf').fontName, 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
+		leftPozition.setFormat(Assets.getFont('assets/mobile/menu/Funkin Bold.otf').fontName, 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
 			FlxColor.BLACK, true);
 		leftPozition.borderSize = 2.4;
 		add(leftPozition);
 
 		downPozition = new FlxText(10, FlxG.height - 64, 0, '', 16);
-		downPozition.setFormat(Assets.getFont('assets/mobile/menu/Comic Sans MS.ttf').fontName, 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
+		downPozition.setFormat(Assets.getFont('assets/mobile/menu/Funkin Bold.otf').fontName, 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
 			FlxColor.BLACK, true);
 		downPozition.borderSize = 2.4;
 		add(downPozition);
 
 		upPozition = new FlxText(10, FlxG.height - 84, 0, '', 16);
-		upPozition.setFormat(Assets.getFont('assets/mobile/menu/Comic Sans MS.ttf').fontName, 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
+		upPozition.setFormat(Assets.getFont('assets/mobile/menu/Funkin Bold.otf').fontName, 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
 			FlxColor.BLACK, true);
 		upPozition.borderSize = 2.4;
 		add(upPozition);
