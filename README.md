@@ -15,8 +15,8 @@ The things im using when i port a mod to android
 Unzip the NDK (the NDK does not need to be installed because its a zip archive)
 
 3. We need to set up Android Studio for this go to android studio and find android sdk (in settings -> Appearance & Behavior -> system settings -> android sdk)
-![andr](https://user-images.githubusercontent.com/59097731/104179652-44346000-541d-11eb-8ad1-1e4dfae304a8.PNG)
-![andr2](https://user-images.githubusercontent.com/59097731/104179943-a9885100-541d-11eb-8f69-7fb5a4bfdd37.PNG)
+![first pic](https://user-images.githubusercontent.com/59097731/104179652-44346000-541d-11eb-8ad1-1e4dfae304a8.PNG)
+![second pic](https://user-images.githubusercontent.com/59097731/104179943-a9885100-541d-11eb-8f69-7fb5a4bfdd37.PNG)
 
 4. Run command `lime setup android` in CMD/PowerShell (You need to insert the program paths)
 
@@ -47,7 +47,7 @@ On This Line
 Replace It With
 ```xml
 	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" width="1280" height="720" resizable="false" allow-shaders="true" require-shaders="true" allow-high-dpi="true" />
+	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false" allow-shaders="true" require-shaders="true" allow-high-dpi="true" />
 ```
 
 Add
@@ -62,14 +62,14 @@ Then, After the Libraries, or where the packeges are located add
 
 Add
 ```xml
-	<!--Make's-the-Game-use-less-ram-->
+	<!--Allow working memory greater than 1 Gig-->
 	<haxedef name="HXCPP_GC_BIG_BLOCKS" />
 
-	<!--Always-enable-Null-Object-Reference-check-->
-	<haxedef name="HXCPP_CHECK_POINTER" if="release" />
-	<haxedef name="HXCPP_STACK_LINE" if="release" />
+	<!--Always enable Null Object Reference check-->
+	<haxedef name="HXCPP_CHECK_POINTER" />
+	<haxedef name="HXCPP_STACK_LINE" />
 
-	<!--Android-Internet-Connection-->
+	<!--Android Internet Connection-->
 	<config:android permission="android.permission.ACCESS_NETWORK_STATE" />
 	<config:android permission="android.permission.ACCESS_WIFI_STATE" />
 	<config:android permission="android.permission.INTERNET" />
@@ -216,7 +216,7 @@ Add
 		}
 	}
 
-	public function removeControlsInput(Tinputs:Array<FlxActionInput>)
+	public function removeVirtualControlsInput(Tinputs:Array<FlxActionInput>)
 	{
 		for (action in this.digitalActions)
 		{
@@ -235,7 +235,7 @@ Add
 	#end
 ```
 
-And replace these lines (you can skip this, it's for psych engine)
+And replace these lines (you can skip this if the mod isn't on psych engine)
 ```haxe
 	public function bindKeys(control:Control, keys:Array<FlxKey>)
 	{
@@ -357,7 +357,7 @@ Add
 	public function removeVirtualPad()
 	{
 		if (trackedinputsVirtualPad != [])
-			controls.removeControlsInput(trackedinputsVirtualPad);
+			controls.removeVirtualControlsInput(trackedinputsVirtualPad);
 
 		if (virtualPad != null)
 			remove(virtualPad);
@@ -393,7 +393,7 @@ Add
 	public function removeMobileControls()
 	{
 		if (trackedinputsMobileControls != [])
-			controls.removeControlsInput(trackedinputsMobileControls);
+			controls.removeVirtualControlsInput(trackedinputsMobileControls);
 
 		if (mobileControls != null)
 			remove(mobileControls);
@@ -415,10 +415,10 @@ Add
 	{
 		#if mobile
 		if (trackedinputsMobileControls != [])
-			controls.removeControlsInput(trackedinputsMobileControls);
+			controls.removeVirtualControlsInput(trackedinputsMobileControls);
 
 		if (trackedinputsVirtualPad != [])
-			controls.removeControlsInput(trackedinputsVirtualPad);
+			controls.removeVirtualControlsInput(trackedinputsVirtualPad);
 		#end
 
 		super.destroy();
@@ -476,7 +476,7 @@ Add
 	public function removeVirtualPad()
 	{
 		if (trackedinputsVirtualPad != [])
-			controls.removeControlsInput(trackedinputsVirtualPad);
+			controls.removeVirtualControlsInput(trackedinputsVirtualPad);
 
 		if (virtualPad != null)
 			remove(virtualPad);
@@ -498,7 +498,7 @@ Add
 	{
 		#if mobile
 		if (trackedinputsVirtualPad != [])
-			controls.removeControlsInput(trackedinputsVirtualPad);
+			controls.removeVirtualControlsInput(trackedinputsVirtualPad);
 		#end
 
 		super.destroy();
@@ -578,14 +578,13 @@ You can set one with
 #if android || FlxG.android.justReleased.BACK #end
 ```
 
-9. On sys.FileSystem and sys.io.File for modding and polymod stuff
+9. On `sys.FileSystem`, `sys.io.File` Stuff
 
 This is not working with app storage but on phone storage it will work with this
 ```haxe
 SUtil.getPath() + 
 ```
-This will make the game use the phone storage
-but you will have to add one thing in your source
+This will make the game use the phone storage but you will have to add one thing in your source
 
 In Main.hx before 
 ```haxe
@@ -596,7 +595,8 @@ Add
 ```haxe
 SUtil.check();
 ```
-This will check for android storage permisions and the assets/mods directories
+
+This will check for android storage permisions and the `assets` or `mods` directories
 
 10. On Crash Application Alert
 
@@ -612,7 +612,7 @@ SUtil.uncaughtErrorHandler();
 
 11. File Saver
 
-This is a feature to save files with sys.io.File in phone storage
+This is a feature to save files with sys.io.File in phone storage in `saves` directory
 
 ```haxe
 SUtil.saveContent("your file name", ".txt", "lololol");
