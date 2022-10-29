@@ -7,9 +7,9 @@ The things im using when i port a mod to android
 ### PC compile instructions For Android:
 
 1. Download
-* [JDK](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html) - Download version `11` of it
+* [JDK](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html) - Download the version `18` of it
 * [Android Studio](https://developer.android.com/studio) - I recomend you to download the latest version
-* [NDK](https://developer.android.com/ndk/downloads/older_releases?hl=fi) - Download version `r21e` (This is the version recomended by Lime)
+* [NDK](https://developer.android.com/ndk/downloads/older_releases?hl=fi) - Download the version `r21e` (This is the version recomended by Lime)
 
 2. Install JDK, Android Studio 
 Unzip the NDK (the NDK does not need to be installed because its a zip archive)
@@ -73,6 +73,10 @@ Add
 	<config:android permission="android.permission.ACCESS_NETWORK_STATE" />
 	<config:android permission="android.permission.ACCESS_WIFI_STATE" />
 	<config:android permission="android.permission.INTERNET" />
+
+	<!--Android Gradle-->
+	<config:android gradle-version="7.5.1" />
+	<config:android gradle-plugin="7.3.1" />
 ```
 
 4. Setup Controls.hx
