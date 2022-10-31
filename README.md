@@ -367,10 +367,7 @@ Add
 			controls.removeVirtualControlsInput(trackedInputsVirtualPad);
 
 		if (virtualPad != null)
-		{
-			virtualPad = FlxDestroyUtil.destroy(virtualPad);
-			virtualPad = null;
-		}
+			remove(virtualPad);
 	}
 
 	public function addMobileControls(DefaultDrawTarget:Bool = true)
@@ -409,10 +406,7 @@ Add
 			controls.removeVirtualControlsInput(trackedInputsMobileControls);
 
 		if (mobileControls != null)
-		{
-			mobileControls = FlxDestroyUtil.destroy(mobileControls);
-			mobileControls = null;
-		}
+			remove(mobileControls);
 	}
 
 	public function addVirtualPadCamera(DefaultDrawTarget:Bool = true)
@@ -498,10 +492,7 @@ Add
 			controls.removeVirtualControlsInput(trackedInputsVirtualPad);
 
 		if (virtualPad != null)
-		{
-			virtualPad = FlxDestroyUtil.destroy(virtualPad);
-			virtualPad = null;
-		}
+			remove(virtualPad);
 	}
 
 	public function addVirtualPadCamera(DefaultDrawTarget:Bool = true)
