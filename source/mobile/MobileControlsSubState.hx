@@ -17,21 +17,21 @@ import openfl.utils.Assets;
 
 class MobileControlsSubState extends FlxSubState
 {
-	final controlsItems:Array<String> = ['Pad-Right', 'Pad-Left', 'Pad-Custom', 'Pad-Duo', 'Hitbox', 'Keyboard'];
-	var virtualPad:FlxVirtualPad;
-	var hitbox:FlxHitbox;
-	var upPosition:FlxText;
-	var downPosition:FlxText;
-	var leftPosition:FlxText;
-	var rightPosition:FlxText;
-	var grpControls:FlxText;
-	var funitext:FlxText;
-	var leftArrow:FlxSprite;
-	var rightArrow:FlxSprite;
-	var curSelected:Int = 0;
-	var buttonBinded:Bool = false;
-	var bindButton:FlxButton;
-	var resetButton:FlxButton;
+	private final controlsItems:Array<String> = ['Pad-Right', 'Pad-Left', 'Pad-Custom', 'Pad-Duo', 'Hitbox', 'Keyboard'];
+	private var virtualPad:FlxVirtualPad;
+	private var hitbox:FlxHitbox;
+	private var upPosition:FlxText;
+	private var downPosition:FlxText;
+	private var leftPosition:FlxText;
+	private var rightPosition:FlxText;
+	private var grpControls:FlxText;
+	private var funitext:FlxText;
+	private var leftArrow:FlxSprite;
+	private var rightArrow:FlxSprite;
+	private var curSelected:Int = 0;
+	private var buttonBinded:Bool = false;
+	private var bindButton:FlxButton;
+	private var resetButton:FlxButton;
 
 	override function create()
 	{
@@ -198,7 +198,7 @@ class MobileControlsSubState extends FlxSubState
 		}
 	}
 
-	function changeSelection(change:Int = 0):Void
+	private function changeSelection(change:Int = 0):Void
 	{
 		curSelected += change;
 
@@ -225,7 +225,7 @@ class MobileControlsSubState extends FlxSubState
 		rightPosition.visible = daChoice == 'Pad-Custom';
 	}
 
-	function moveButton(touch:FlxTouch, button:FlxButton):Void
+	private function moveButton(touch:FlxTouch, button:FlxButton):Void
 	{
 		bindButton = button;
 		bindButton.x = touch.x - Std.int(bindButton.width / 2);
@@ -235,7 +235,7 @@ class MobileControlsSubState extends FlxSubState
 			buttonBinded = true;
 	}
 
-	function reloadMobileControls(daChoice:String):Void
+	private function reloadMobileControls(daChoice:String):Void
 	{
 		switch (daChoice)
 		{
