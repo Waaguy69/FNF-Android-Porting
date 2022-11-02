@@ -56,9 +56,6 @@ class SUtil
 		if (Permissions.getGrantedPermissions().contains(Permissions.WRITE_EXTERNAL_STORAGE)
 			&& Permissions.getGrantedPermissions().contains(Permissions.READ_EXTERNAL_STORAGE))
 		{
-			if (!FileSystem.exists(SUtil.getStorageDirectory()))
-				FileSystem.createDirectory(SUtil.getStorageDirectory());
-
 			if (!FileSystem.exists(SUtil.getStorageDirectory() + 'assets') && !FileSystem.exists(SUtil.getStorageDirectory() + 'mods'))
 			{
 				Lib.application.window.alert("Whoops, seems like you didn't extract the files from the .APK!\nPlease watch the tutorial by pressing OK.",
@@ -120,6 +117,9 @@ class SUtil
 			&& !Permissions.getGrantedPermissions().contains(Permissions.READ_EXTERNAL_STORAGE))
 			daPath = LimeSystem.applicationStorageDirectory;
 
+		if (!FileSystem.exists(daPath))
+			FileSystem.createDirectory(daPath);
+
 		return daPath;
 		#else
 		return '';
@@ -158,9 +158,6 @@ class SUtil
 			#if (sys && !ios)
 			try
 			{
-				if (!FileSystem.exists(SUtil.getStorageDirectory()))
-					FileSystem.createDirectory(SUtil.getStorageDirectory());
-
 				if (!FileSystem.exists(SUtil.getStorageDirectory() + 'logs'))
 					FileSystem.createDirectory(SUtil.getStorageDirectory() + 'logs');
 
@@ -191,9 +188,6 @@ class SUtil
 	{
 		try
 		{
-			if (!FileSystem.exists(SUtil.getStorageDirectory()))
-				FileSystem.createDirectory(SUtil.getStorageDirectory());
-
 			if (!FileSystem.exists(SUtil.getStorageDirectory() + 'saves'))
 				FileSystem.createDirectory(SUtil.getStorageDirectory() + 'saves');
 
