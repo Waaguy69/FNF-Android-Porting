@@ -510,7 +510,7 @@ Add
 	override function destroy()
 	{
 		#if mobile
-		if (trackedinputsVirtualPad != [])
+		if (trackedInputsVirtualPad != [])
 			controls.removeVirtualControlsInput(trackedInputsVirtualPad);
 		#end
 
