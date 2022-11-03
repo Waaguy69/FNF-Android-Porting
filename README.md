@@ -511,7 +511,7 @@ Add
 	{
 		#if mobile
 		if (trackedinputsVirtualPad != [])
-			controls.removeVirtualControlsInput(trackedinputsVirtualPad);
+			controls.removeVirtualControlsInput(trackedInputsVirtualPad);
 		#end
 
 		super.destroy();
