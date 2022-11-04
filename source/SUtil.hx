@@ -8,6 +8,7 @@ import android.widget.Toast;
 #end
 import flixel.FlxG;
 import haxe.CallStack;
+import haxe.io.Path;
 import lime.system.System as LimeSystem;
 import openfl.Lib;
 import openfl.events.UncaughtErrorEvent;
@@ -182,6 +183,39 @@ class SUtil
 		});
 	}
 
+	public static function mkDirs(directory:String):Void
+	{
+		if (FileSystem.exists(directory) && FileSystem.isDirectory(directory))
+			return;
+
+		var total:String = '';
+
+		if (directory.substr(0, 1) == '/')
+			total = '/';
+
+		var parts:Array<String> = directory.split('/');
+
+		if (parts.length > 0 && parts[0].indexOf(':') > -1)
+			parts.shift();
+
+		for (part in parts)
+		{
+			if (part != '.' && part != '')
+			{
+				if (total != '' && total != '/')
+					total += '/';
+
+				total += part;
+
+				if (FileSystem.exists(total) && !FileSystem.isDirectory(total))
+					FileSystem.deleteFile(total);
+
+				if (!FileSystem.exists(total))
+					FileSystem.createDirectory(total);
+			}
+		}
+	}
+
 	#if (sys && !ios)
 	public static function saveContent(fileName:String = 'file', fileExtension:String = '.json',
 			fileData:String = 'you forgot to add something in your code lol'):Void
@@ -207,7 +241,10 @@ class SUtil
 		try
 		{
 			if (!FileSystem.exists(savePath) && Assets.exists(copyPath))
+			{
+				SUtil.mkDirs(Path.directory(savePath));
 				File.saveBytes(savePath, Assets.getBytes(copyPath));
+			}
 		}
 		#if android
 		catch (e:Dynamic)
