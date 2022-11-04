@@ -6,7 +6,6 @@ import android.os.Build;
 import android.os.Environment;
 import android.widget.Toast;
 #end
-import flixel.FlxG;
 import haxe.CallStack;
 import haxe.io.Path;
 import lime.system.System as LimeSystem;
@@ -61,7 +60,7 @@ class SUtil
 			{
 				Lib.application.window.alert("Whoops, seems like you didn't extract the files from the .APK!\nPlease watch the tutorial by pressing OK.",
 					'Error!');
-				FlxG.openURL('https://youtu.be/zjvkTmdWvfU');
+				LimeSystem.openURL('https://youtu.be/zjvkTmdWvfU');
 				LimeSystem.exit(1);
 			}
 			else if ((FileSystem.exists(SUtil.getStorageDirectory() + 'assets') && !FileSystem.isDirectory(SUtil.getStorageDirectory() + 'assets'))
@@ -77,7 +76,7 @@ class SUtil
 				{
 					Lib.application.window.alert("Whoops, seems like you didn't extract the assets/assets folder from the .APK!\nPlease watch the tutorial by pressing OK.",
 						'Error!');
-					FlxG.openURL('https://youtu.be/zjvkTmdWvfU');
+					LimeSystem.openURL('https://youtu.be/zjvkTmdWvfU');
 					LimeSystem.exit(1);
 				}
 				else if (FileSystem.exists(SUtil.getStorageDirectory() + 'assets') && !FileSystem.isDirectory(SUtil.getStorageDirectory() + 'assets'))
@@ -91,7 +90,7 @@ class SUtil
 				{
 					Lib.application.window.alert("Whoops, seems like you didn't extract the assets/mods folder from the .APK!\nPlease watch the tutorial by pressing OK.",
 						'Error!');
-					FlxG.openURL('https://youtu.be/zjvkTmdWvfU');
+					LimeSystem.openURL('https://youtu.be/zjvkTmdWvfU');
 					LimeSystem.exit(1);
 				}
 				else if (FileSystem.exists(SUtil.getStorageDirectory() + 'mods') && !FileSystem.isDirectory(SUtil.getStorageDirectory() + 'mods'))
