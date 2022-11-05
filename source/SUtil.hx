@@ -182,6 +182,9 @@ class SUtil
 		});
 	}
 
+	/**
+	 * This is mostly a fork of https://github.com/openfl/hxp/blob/master/src/hxp/System.hx#L595
+	 */
 	public static function mkDirs(directory:String):Void
 	{
 		if (FileSystem.exists(directory) && FileSystem.isDirectory(directory))
