@@ -64,9 +64,8 @@ class SUtil
 		{
 			if (!FileSystem.exists(SUtil.getStorageDirectory() + 'assets') && !FileSystem.exists(SUtil.getStorageDirectory() + 'mods'))
 			{
-				Lib.application.window.alert("Whoops, seems like you didn't extract the files from the .APK!\nPlease watch the tutorial by pressing OK.",
+				Lib.application.window.alert("Whoops, seems like you didn't extract the files from the .APK!\nPlease copy the files from the .APK to\n" + SUtil.getStorageDirectory(),
 					'Error!');
-				LimeSystem.openURL('https://youtu.be/zjvkTmdWvfU');
 				LimeSystem.exit(1);
 			}
 			else if ((FileSystem.exists(SUtil.getStorageDirectory() + 'assets') && !FileSystem.isDirectory(SUtil.getStorageDirectory() + 'assets'))
@@ -80,9 +79,8 @@ class SUtil
 			{
 				if (!FileSystem.exists(SUtil.getStorageDirectory() + 'assets'))
 				{
-					Lib.application.window.alert("Whoops, seems like you didn't extract the assets/assets folder from the .APK!\nPlease watch the tutorial by pressing OK.",
+					Lib.application.window.alert("Whoops, seems like you didn't extract the assets/assets folder from the .APK!\nPlease copy the assets/assets folder from the .APK to\n" + SUtil.getStorageDirectory(),
 						'Error!');
-					LimeSystem.openURL('https://youtu.be/zjvkTmdWvfU');
 					LimeSystem.exit(1);
 				}
 				else if (FileSystem.exists(SUtil.getStorageDirectory() + 'assets') && !FileSystem.isDirectory(SUtil.getStorageDirectory() + 'assets'))
@@ -94,9 +92,8 @@ class SUtil
 
 				if (!FileSystem.exists(SUtil.getStorageDirectory() + 'mods'))
 				{
-					Lib.application.window.alert("Whoops, seems like you didn't extract the assets/mods folder from the .APK!\nPlease watch the tutorial by pressing OK.",
+					Lib.application.window.alert("Whoops, seems like you didn't extract the assets/mods folder from the .APK!\nPlease copy the assets/mods folder from the .APK to\n" + SUtil.getStorageDirectory(),
 						'Error!');
-					LimeSystem.openURL('https://youtu.be/zjvkTmdWvfU');
 					LimeSystem.exit(1);
 				}
 				else if (FileSystem.exists(SUtil.getStorageDirectory() + 'mods') && !FileSystem.isDirectory(SUtil.getStorageDirectory() + 'mods'))
