@@ -18,6 +18,7 @@ import openfl.utils.Assets;
 class MobileControlsSubState extends FlxSubState
 {
 	private final controlsItems:Array<String> = ['Pad-Right', 'Pad-Left', 'Pad-Custom', 'Pad-Duo', 'Hitbox', 'Keyboard'];
+
 	private var virtualPad:FlxVirtualPad;
 	private var hitbox:FlxHitbox;
 	private var upPosition:FlxText;
@@ -164,24 +165,16 @@ class MobileControlsSubState extends FlxSubState
 				{
 					if (virtualPad.buttonUp.justPressed)
 						moveButton(touch, virtualPad.buttonUp);
-
-					if (virtualPad.buttonDown.justPressed)
+					else if (virtualPad.buttonDown.justPressed)
 						moveButton(touch, virtualPad.buttonDown);
-
-					if (virtualPad.buttonRight.justPressed)
+					else if (virtualPad.buttonRight.justPressed)
 						moveButton(touch, virtualPad.buttonRight);
-
-					if (virtualPad.buttonLeft.justPressed)
+					else if (virtualPad.buttonLeft.justPressed)
 						moveButton(touch, virtualPad.buttonLeft);
 				}
-
-				for (i in [virtualPad.buttonUp, virtualPad.buttonDown, virtualPad.buttonRight, virtualPad.buttonLeft])
-					for (j in [upPosition, downPosition, leftPosition, rightPosition])
-						if (i == bindButton)
-							j.addFormat(new FlxTextFormat(FlxColor.YELLOW), 0, j.text.length);
 			}
 		}
-  
+
 		if (virtualPad != null && controlsItems[Math.floor(curSelected)] == 'Pad-Custom')
 		{
 			if (virtualPad.buttonUp != null)
@@ -207,7 +200,7 @@ class MobileControlsSubState extends FlxSubState
 		else if (curSelected >= controlsItems.length)
 			curSelected = 0;
 
-		grpControls.text = controlsItems[curSelected].toUpperCase();
+		grpControls.text = controlsItems[Math.floor(curSelected)];
 		grpControls.screenCenter(X);
 
 		leftArrow.x = grpControls.x - 60;
