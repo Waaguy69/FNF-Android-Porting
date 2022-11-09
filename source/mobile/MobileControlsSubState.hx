@@ -58,7 +58,7 @@ class MobileControlsSubState extends FlxSubState
 		exitButton.setGraphicSize(Std.int(exitButton.width) * 3);
 		exitButton.label.setFormat(Assets.getFont('assets/mobile/menu/Funkin Bold.otf').fontName, 21, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,
 			FlxColor.BLACK, true);
-		exitButton.color = FlxColor.YELLOW;
+		exitButton.color = FlxColor.LIME;
 		add(exitButton);
 
 		resetButton = new FlxButton(exitButton.x, exitButton.y + 100, 'Reset', function()
@@ -260,7 +260,7 @@ class MobileControlsSubState extends FlxSubState
 			virtualPad.visible = (daChoice != 'Hitbox' && daChoice != 'Keyboard');
 
 		if (hitbox != null)
-			hitbox.visible = (daChoice == 'hitbox');
+			hitbox.visible = (daChoice == 'Hitbox');
 	}
 
 	private function removeControls():Void
