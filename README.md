@@ -652,6 +652,5 @@ if (justTouched)
 
 ## Credits:
 * Saw (M.A. JIGSAW) me - Doing the rest of the code, utils, pad buttons and other things
-* luckydog7 - Original code for android controls and hitbox original design.
+* luckydog7 - Original code for mobile controls and hitbox graphic shape original code.
 * Goldie - Pad designer.
-* RozeBud - The FNF Alphabet in `.otf` format.
