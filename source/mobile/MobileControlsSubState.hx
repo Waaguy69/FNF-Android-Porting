@@ -76,8 +76,8 @@ class MobileControlsSubState extends FlxSubState
 		resetButton.visible = false;
 		add(resetButton);
 
-		funitext = new FlxText(0, 0, 0, 'No Android Controls!', 42);
-		funitext.setFormat(Assets.getFont('assets/mobile/menu/vcr.ttf').fontName, 42, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,
+		funitext = new FlxText(0, 0, 0, 'No Android Controls!', 32);
+		funitext.setFormat(Assets.getFont('assets/mobile/menu/vcr.ttf').fontName, 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,
 			FlxColor.BLACK, true);
 		funitext.borderSize = 3;
 		funitext.borderQuality = 1;
@@ -85,8 +85,8 @@ class MobileControlsSubState extends FlxSubState
 		funitext.visible = false;
 		add(funitext);
 
-		grpControls = new FlxText(0, 100, 0, '', 42);
-		grpControls.setFormat(Assets.getFont('assets/mobile/menu/vcr.ttf').fontName, 42, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,
+		grpControls = new FlxText(0, 100, 0, '', 32);
+		grpControls.setFormat(Assets.getFont('assets/mobile/menu/vcr.ttf').fontName, 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,
 			FlxColor.BLACK, true);
 		grpControls.borderSize = 3;
 		grpControls.borderQuality = 1;
@@ -105,29 +105,29 @@ class MobileControlsSubState extends FlxSubState
 		rightArrow.animation.play('idle');
 		add(rightArrow);
 
-		rightPosition = new FlxText(10, FlxG.height - 24, 0, '', 21);
-		rightPosition.setFormat(Assets.getFont('assets/mobile/menu/vcr.ttf').fontName, 21, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
+		rightPosition = new FlxText(10, FlxG.height - 24, 0, '', 16);
+		rightPosition.setFormat(Assets.getFont('assets/mobile/menu/vcr.ttf').fontName, 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
 			FlxColor.BLACK, true);
 		rightPosition.borderSize = 3;
 		rightPosition.borderQuality = 1;
 		add(rightPosition);
 
-		leftPosition = new FlxText(10, FlxG.height - 44, 0, '', 21);
-		leftPosition.setFormat(Assets.getFont('assets/mobile/menu/vcr.ttf').fontName, 21, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
+		leftPosition = new FlxText(10, FlxG.height - 44, 0, '', 16);
+		leftPosition.setFormat(Assets.getFont('assets/mobile/menu/vcr.ttf').fontName, 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
 			FlxColor.BLACK, true);
 		leftPosition.borderSize = 3;
 		leftPosition.borderQuality = 1;
 		add(leftPosition);
 
-		downPosition = new FlxText(10, FlxG.height - 64, 0, '', 21);
-		downPosition.setFormat(Assets.getFont('assets/mobile/menu/vcr.ttf').fontName, 21, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
+		downPosition = new FlxText(10, FlxG.height - 64, 0, '', 16);
+		downPosition.setFormat(Assets.getFont('assets/mobile/menu/vcr.ttf').fontName, 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
 			FlxColor.BLACK, true);
 		downPosition.borderSize = 3;
 		downPosition.borderQuality = 1;
 		add(downPosition);
 
-		upPosition = new FlxText(10, FlxG.height - 84, 0, '', 21);
-		upPosition.setFormat(Assets.getFont('assets/mobile/menu/vcr.ttf').fontName, 21, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
+		upPosition = new FlxText(10, FlxG.height - 84, 0, '', 16);
+		upPosition.setFormat(Assets.getFont('assets/mobile/menu/vcr.ttf').fontName, 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,
 			FlxColor.BLACK, true);
 		upPosition.borderSize = 3;
 		upPosition.borderQuality = 1;
