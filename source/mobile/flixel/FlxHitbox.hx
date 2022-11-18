@@ -1,10 +1,10 @@
 package mobile.flixel;
 
+import flash.display.BitmapData;
+import flash.display.Shape;
 import flixel.FlxG;
 import flixel.group.FlxSpriteGroup;
 import mobile.flixel.FlxButton;
-import openfl.display.BitmapData;
-import openfl.display.Shape;
 
 /**
  * A zone with 4 hint's (A hitbox).
