@@ -69,18 +69,15 @@ Add
 	<haxedef name="HXCPP_CHECK_POINTER" />
 	<haxedef name="HXCPP_STACK_LINE" />
 
-	<!--Android Internet Connection-->
+	<!--Android Permissions-->
 	<config:android permission="android.permission.ACCESS_NETWORK_STATE" />
 	<config:android permission="android.permission.ACCESS_WIFI_STATE" />
 	<config:android permission="android.permission.INTERNET" />
-
-	<!--Android External Storage-->
 	<config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<config:android permission="android.permission.READ_EXTERNAL_STORAGE" />
 
 	<!--Android Gradle-->
-	<config:android gradle-version="7.5.1" />
-	<config:android gradle-plugin="7.3.1" />
+	<config:android gradle-version="7.5.1" gradle-plugin="7.3.1" />
 ```
 
 4. Setup Controls.hx
