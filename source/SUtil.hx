@@ -124,6 +124,8 @@ class SUtil
 		}
 
 		return daPath;
+		#elseif ios
+		return LimeSystem.applicationStorageDirectory;
 		#else
 		return '';
 		#end
@@ -158,7 +160,7 @@ class SUtil
 
 			errMsg += u.error;
 
-			#if (sys && !ios)
+			#if sys
 			try
 			{
 				if (!FileSystem.exists(SUtil.getStorageDirectory() + 'logs'))
@@ -221,7 +223,7 @@ class SUtil
 		}
 	}
 
-	#if (sys && !ios)
+	#if sys
 	public static function saveContent(fileName:String = 'file', fileExtension:String = '.json',
 			fileData:String = 'you forgot to add something in your code lol'):Void
 	{
