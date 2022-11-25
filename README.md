@@ -83,6 +83,7 @@ Add
 	</section>
 
 	<section if="ios">
+		<!--Dependency--> 
 		<dependency name="Metal.framework" />
 		<dependency name="WebKit.framework" />
 	</section>
