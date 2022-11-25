@@ -12,18 +12,17 @@ import lime.system.System as LimeSystem;
 import openfl.Lib;
 import openfl.events.UncaughtErrorEvent;
 import openfl.utils.Assets;
-
-using StringTools;
-
 #if sys
 import sys.FileSystem;
 import sys.io.File;
 #end
 
+using StringTools;
+
 enum StorageType
 {
-	ANDROID_DATA;
-	ROOT;
+	DATA;
+	EXTERNAL_DATA;
 }
 
 /**
@@ -32,6 +31,28 @@ enum StorageType
  */
 class SUtil
 {
+	/**
+	 * This returns the external storage path that the game will use by the type.
+	 */
+	public static function getStorageDirectory(type:StorageType = EXTERNAL_DATA):String
+	{
+		var daPath:String = '';
+
+		#if android
+		switch (type)
+		{
+			case DATA:
+				daPath = Context.getFilesDir() + '/';
+			case EXTERNAL_DATA:
+				daPath = Context.getExternalFilesDir(null) + '/';
+		}
+		#elseif ios
+		daPath = LimeSystem.applicationStorageDirectory;
+		#end
+
+		return daPath;
+	}
+
 	/**
 	 * A simple function that checks for storage permissions and game files/folders.
 	 */
@@ -146,30 +167,6 @@ class SUtil
 				LimeSystem.exit(1);
 			}
 		}
-		#end
-	}
-
-	/**
-	 * This returns the external storage path that the game will use by the type.
-	 */
-	public static function getStorageDirectory(type:StorageType = ANDROID_DATA):String
-	{
-		#if android
-		var daPath:String = '';
-
-		switch (type)
-		{
-			case ANDROID_DATA:
-				daPath = Context.getExternalFilesDir(null) + '/';
-			case ROOT:
-				daPath = Context.getFilesDir() + '/';
-		}
-
-		return daPath;
-		#elseif ios
-		return LimeSystem.applicationStorageDirectory;
-		#else
-		return '';
 		#end
 	}
 
