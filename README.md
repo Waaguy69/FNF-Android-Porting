@@ -52,7 +52,7 @@ Replace It With
 
 Add
 ```xml
-	<assets path="mobile" rename="assets/mobile" if="mobile" /> <!-- to not have the mobile assets in another builds -saw -->
+	<assets path="mobile" rename="assets/mobile" if="mobile" /> <!-- in order to not have the mobile assets in another builds -saw -->
 ```
 
 Then, After the Libraries, or where the packeges are located add
