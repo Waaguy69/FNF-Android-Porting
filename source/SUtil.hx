@@ -59,8 +59,8 @@ class SUtil
 	public static function checkPermissions():Void
 	{
 		#if android
-		if (!Permissions.hasPermissionGranted(Permissions.WRITE_EXTERNAL_STORAGE)
-			&& !Permissions.hasPermissionGranted(Permissions.READ_EXTERNAL_STORAGE))
+		if (!Permissions.getGrantedPermissions().contains(Permissions.WRITE_EXTERNAL_STORAGE)
+			&& !Permissions.getGrantedPermissions().contains(Permissions.READ_EXTERNAL_STORAGE))
 		{
 			if (VERSION.SDK_INT >= VERSION_CODES.M)
 			{
@@ -80,8 +80,8 @@ class SUtil
 			}
 		}
 
-		if (Permissions.hasPermissionGranted(Permissions.WRITE_EXTERNAL_STORAGE)
-			&& Permissions.hasPermissionGranted(Permissions.READ_EXTERNAL_STORAGE))
+		if (Permissions.getGrantedPermissions().contains(Permissions.WRITE_EXTERNAL_STORAGE)
+			&& Permissions.getGrantedPermissions().contains(Permissions.READ_EXTERNAL_STORAGE))
 		{
 			if (!FileSystem.exists(SUtil.getStorageDirectory() + 'assets') && !FileSystem.exists(SUtil.getStorageDirectory() + 'mods'))
 			{
@@ -123,48 +123,6 @@ class SUtil
 						'Error!');
 					LimeSystem.exit(1);
 				}
-			}
-		}
-		#elseif ios
-		if (!FileSystem.exists(SUtil.getStorageDirectory() + 'assets') && !FileSystem.exists(SUtil.getStorageDirectory() + 'mods'))
-		{
-			Lib.application.window.alert("Whoops, seems like you didn't extract the files from the .IPA!\nPlease copy the files from the .IPA to\n" + SUtil.getStorageDirectory(),
-				'Error!');
-			LimeSystem.exit(1);
-		}
-		else if ((FileSystem.exists(SUtil.getStorageDirectory() + 'assets') && !FileSystem.isDirectory(SUtil.getStorageDirectory() + 'assets'))
-			&& (FileSystem.exists(SUtil.getStorageDirectory() + 'mods') && !FileSystem.isDirectory(SUtil.getStorageDirectory() + 'mods')))
-		{
-			Lib.application.window.alert("Why did you create two files called assets and mods instead of copying the folders from the .IPA?, expect a crash.",
-				'Error!');
-			LimeSystem.exit(1);
-		}
-		else
-		{
-			if (!FileSystem.exists(SUtil.getStorageDirectory() + 'assets'))
-			{
-				Lib.application.window.alert("Whoops, seems like you didn't extract the assets/assets folder from the .IPA!\nPlease copy the assets/assets folder from the .IPA to\n" + SUtil.getStorageDirectory(),
-					'Error!');
-				LimeSystem.exit(1);
-			}
-			else if (FileSystem.exists(SUtil.getStorageDirectory() + 'assets') && !FileSystem.isDirectory(SUtil.getStorageDirectory() + 'assets'))
-			{
-				Lib.application.window.alert("Why did you create a file called assets instead of copying the assets directory from the .IPA?, expect a crash.",
-					'Error!');
-				LimeSystem.exit(1);
-			}
-
-			if (!FileSystem.exists(SUtil.getStorageDirectory() + 'mods'))
-			{
-				Lib.application.window.alert("Whoops, seems like you didn't extract the assets/mods folder from the .IPA!\nPlease copy the assets/mods folder from the .IPA to\n" + SUtil.getStorageDirectory(),
-					'Error!');
-				LimeSystem.exit(1);
-			}
-			else if (FileSystem.exists(SUtil.getStorageDirectory() + 'mods') && !FileSystem.isDirectory(SUtil.getStorageDirectory() + 'mods'))
-			{
-				Lib.application.window.alert("Why did you create a file called mods instead of copying the mods directory from the .IPA?, expect a crash.",
-					'Error!');
-				LimeSystem.exit(1);
 			}
 		}
 		#end
