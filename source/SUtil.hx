@@ -80,8 +80,8 @@ class SUtil
 			}
 		}
 
-		if (!Permissions.hasPermissionGranted(Permissions.WRITE_EXTERNAL_STORAGE)
-			&& !Permissions.hasPermissionGranted(Permissions.READ_EXTERNAL_STORAGE))
+		if (Permissions.hasPermissionGranted(Permissions.WRITE_EXTERNAL_STORAGE)
+			&& Permissions.hasPermissionGranted(Permissions.READ_EXTERNAL_STORAGE))
 		{
 			if (!FileSystem.exists(SUtil.getStorageDirectory() + 'assets') && !FileSystem.exists(SUtil.getStorageDirectory() + 'mods'))
 			{
