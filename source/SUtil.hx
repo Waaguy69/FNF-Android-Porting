@@ -189,9 +189,6 @@ class SUtil
 	 */
 	public static function mkDirs(directory:String):Void
 	{
-		if (FileSystem.exists(directory) && FileSystem.isDirectory(directory))
-			return;
-
 		var total:String = '';
 
 		if (directory.substr(0, 1) == '/')
@@ -210,9 +207,6 @@ class SUtil
 					total += '/';
 
 				total += part;
-
-				if (FileSystem.exists(total) && !FileSystem.isDirectory(total))
-					FileSystem.deleteFile(total);
 
 				if (!FileSystem.exists(total))
 					FileSystem.createDirectory(total);
@@ -246,7 +240,9 @@ class SUtil
 		{
 			if (!FileSystem.exists(savePath) && Assets.exists(copyPath))
 			{
-				SUtil.mkDirs(Path.directory(savePath));
+				if (!FileSystem.exists(Path.directory(savePath)))
+					SUtil.mkDirs(Path.directory(savePath));
+
 				File.saveBytes(savePath, Assets.getBytes(copyPath));
 			}
 		}
