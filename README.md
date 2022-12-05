@@ -374,7 +374,7 @@ Add
 
 	public function removeVirtualPad()
 	{
-		if (trackedInputsVirtualPad != [])
+		if (trackedInputsVirtualPad.length > 0)
 			controls.removeVirtualControlsInput(trackedInputsVirtualPad);
 
 		if (virtualPad != null)
@@ -413,7 +413,7 @@ Add
 
 	public function removeMobileControls()
 	{
-		if (trackedInputsMobileControls != [])
+		if (trackedInputsMobileControls.length > 0)
 			controls.removeVirtualControlsInput(trackedInputsMobileControls);
 
 		if (mobileControls != null)
@@ -435,10 +435,10 @@ Add
 	override function destroy()
 	{
 		#if mobile
-		if (trackedInputsMobileControls != [])
+		if (trackedInputsMobileControls.length > 0)
 			controls.removeVirtualControlsInput(trackedInputsMobileControls);
 
-		if (trackedInputsVirtualPad != [])
+		if (trackedInputsVirtualPad.length > 0)
 			controls.removeVirtualControlsInput(trackedInputsVirtualPad);
 		#end
 
@@ -499,7 +499,7 @@ Add
 
 	public function removeVirtualPad()
 	{
-		if (trackedInputsVirtualPad != [])
+		if (trackedInputsVirtualPad.length > 0)
 			controls.removeVirtualControlsInput(trackedInputsVirtualPad);
 
 		if (virtualPad != null)
@@ -521,7 +521,7 @@ Add
 	override function destroy()
 	{
 		#if mobile
-		if (trackedInputsVirtualPad != [])
+		if (trackedInputsVirtualPad.length > 0)
 			controls.removeVirtualControlsInput(trackedInputsVirtualPad);
 		#end
 
