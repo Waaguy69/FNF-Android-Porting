@@ -131,7 +131,7 @@ class SUtil
 	}
 
 	/**
-	 * Uncaught error handler, original made by: sqirra-rng
+	 * Uncaught error handler, original made by: Sqirra-RNG and YoshiCrafter29
 	 */
 	public static function uncaughtErrorHandler():Void
 	{
