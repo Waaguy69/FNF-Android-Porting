@@ -446,16 +446,10 @@ Add
 
 		#if mobile
 		if (virtualPad != null)
-		{
 			virtualPad = FlxDestroyUtil.destroy(virtualPad);
-			virtualPad = null;
-		}
 
 		if (mobileControls != null)
-		{
 			mobileControls = FlxDestroyUtil.destroy(mobileControls);
-			mobileControls = null;
-		}
 		#end
 	}
 ```
@@ -529,10 +523,7 @@ Add
 
 		#if mobile
 		if (virtualPad != null)
-		{
 			virtualPad = FlxDestroyUtil.destroy(virtualPad);
-			virtualPad = null;
-		}
 		#end
 	}
 ```
