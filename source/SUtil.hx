@@ -281,8 +281,7 @@ class SUtil
 		#if sys
 		Sys.println(msg);
 		#else
-		// Pass null to exclude the position.
-		Log.trace(msg, null);
+		Log.trace(msg, null); // Pass null to exclude the position.
 		#end
 	}
 }
