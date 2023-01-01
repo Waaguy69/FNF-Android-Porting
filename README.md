@@ -83,7 +83,7 @@ Add
 		<config:android gradle-version="7.6" gradle-plugin="7.3.1" />
 
 		<!--Audio Recording Fix-->
-		<config:android target-sdk-version="29" />
+		<config:android target-sdk-version="29" if="${lime <= 8.0.0}" />
 	</section>
 
 	<section if="ios">
