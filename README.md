@@ -78,6 +78,7 @@ Add
 		<config:android permission="android.permission.INTERNET" />
 		<config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" />
 		<config:android permission="android.permission.READ_EXTERNAL_STORAGE" />
+		<config:android permission="android.permission.VIBRATE" />
 
 		<!--Gradle-->
 		<config:android gradle-version="7.6" gradle-plugin="7.3.1" />
