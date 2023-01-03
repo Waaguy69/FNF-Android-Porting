@@ -397,12 +397,12 @@ Add
 			remove(virtualPad);
 	}
 
-	public function addHitbox(?visible = true):Void
+	public function addHitbox(gradientHints:Bool = false, ?visible = true):Void
 	{
 		if (hitbox != null)
 			removeHitbox();
 
-		hitbox = new FlxHitbox();
+		hitbox = new FlxHitbox(gradientHints);
 		hitbox.visible = visible;
 		add(hitbox);
 
