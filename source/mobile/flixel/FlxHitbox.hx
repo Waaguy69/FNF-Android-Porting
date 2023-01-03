@@ -56,14 +56,10 @@ class FlxHitbox extends FlxSpriteGroup
 			shape.graphics.beginFill(Color);
 			shape.graphics.lineStyle(3, Color, 1);
 			shape.graphics.drawRect(0, 0, Width, Height);
-			shape.graphics.lineStyle(0, 0, 0);
-			shape.graphics.drawRect(3, 3, Width - 6, Height - 6);
 			shape.graphics.endFill();
-			shape.graphics.beginGradientFill(LINEAR, [Color, 0x00000000], [0.6, 0], [0, 127], PAD, RGB, 0.5);
-			shape.graphics.drawRect(3, 3, Width - 6, Height - 6);
-			shape.graphics.endFill();
-			shape.graphics.beginGradientFill(LINEAR, [0x00000000, Color], [0, 0.6], [127, 255], PAD, RGB, 0.5);
-			shape.graphics.drawRect(3, 3, Width - 6, Height - 6);
+			shape.graphics.beginFill(Color, 0.6);
+			shape.graphics.lineStyle(10, Color, 1);
+			shape.graphics.drawRect(3, 3, Width - 6, Height - 6));
 			shape.graphics.endFill();
 		}
 		else
