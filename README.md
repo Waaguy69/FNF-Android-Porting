@@ -397,12 +397,12 @@ Add
 			remove(virtualPad);
 	}
 
-	public function addHitbox(gradientHints:Bool = false, ?visible = true):Void
+	public function addHitbox(?visible = true):Void
 	{
 		if (hitbox != null)
 			removeHitbox();
 
-		hitbox = new FlxHitbox(gradientHints);
+		hitbox = new FlxHitbox();
 		hitbox.visible = visible;
 		add(hitbox);
 
@@ -474,7 +474,7 @@ removeVirtualPad();
 
 //if you want to add the hitbox to a state
 #if mobile
-addHitbox(false);
+addHitbox();
 #end
 
 //if you want it to have a camera
