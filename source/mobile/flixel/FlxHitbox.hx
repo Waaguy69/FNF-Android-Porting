@@ -62,7 +62,7 @@ class FlxHitbox extends FlxSpriteGroup
 			shape.graphics.beginGradientFill(LINEAR, [Color, 0x00000000], [0.6, 0], [0, 127], PAD, RGB, 0.5);
 			shape.graphics.drawRect(3, 3, Width - 6, Height - 6);
 			shape.graphics.endFill();
-			shape.graphics.beginGradientFill(LINEAR, [Color, 0x00000000], [0.6, 0], [127, 255], PAD, RGB, 0.5);
+			shape.graphics.beginGradientFill(LINEAR, [0x00000000, Color], [0, 0.6], [127, 255], PAD, RGB, 0.5);
 			shape.graphics.drawRect(3, 3, Width - 6, Height - 6);
 			shape.graphics.endFill();
 		}
@@ -89,8 +89,8 @@ class FlxHitbox extends FlxSpriteGroup
 		hint.alpha = 0.00001;
 		hint.onDown.callback = hint.onOver.callback = function()
 		{
-			if (hint.alpha != 0.25)
-				hint.alpha = 0.25;
+			if (hint.alpha != (GradientHint ? 0.5 : 0.25))
+				hint.alpha = (GradientHint ? 0.5 : 0.25);
 		}
 		hint.onUp.callback = hint.onOut.callback = function()
 		{
