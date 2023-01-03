@@ -474,7 +474,7 @@ removeVirtualPad();
 
 //if you want to add the hitbox to a state
 #if mobile
-addHitbox();
+addHitbox(false);
 #end
 
 //if you want it to have a camera
